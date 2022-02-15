@@ -15,7 +15,7 @@ library(tidyverse)
 Let's first load the data:
 
 ```{r label-me1, eval=FALSE}
-nobel <- ___(___)
+nobel <- read_csv(file = "data-raw/nobel.csv")
 ```
 
 Then let's split the data into two:
