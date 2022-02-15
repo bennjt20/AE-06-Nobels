@@ -1,7 +1,7 @@
 ---
 title: "Nobel winners"
-author: "YOU"
-date: "`r Sys.Date()`"
+author: "John T. Bennett"
+date: "dtg"
 output: 
   html_document: 
     toc: yes
