@@ -31,14 +31,14 @@ Then let's split the data into two:
     Create a new data frame, nobel_stem, that filters for the STEM fields (Physics, Medicine, Chemistry, and Economics).
     Create another data frame, nobel_nonstem, that filters for the remaining fields. Tip: Use the %in% operator when filtering
 
-```{r label-me2, eval=FALSE}
 # stem laureates
+```{r label-me2, eval=FALSE}
 nobel_stem <- nobel %>%
   filter(category %in% c ("Physics", "Medicine", "Chemistry", "Economics"))
 ```
 
-```{r Non-stem}
 # non-stem laureates
+```{r Non-stem}
 nobel_nonstem <- nobel %>%
   filter(category %in% c("Literature", "Peace"))
 ```
@@ -55,13 +55,15 @@ write_csv(df, file = "data-raw/df.csv")
 1) nobel-stem.csv 
 ```{r nobel-stem.csv}
 write_csv(nobel_stem, file = "data-raw/nobel_stem.csv")
-fs::dir_ls("data-raw")
 ```
 
 2) nobel-nonstem.csv
 ```{r nobel-nonstem.csv}
 write_csv(nobel_nonstem, file = "data-raw/nobel_nonstem.csv")
 ```
+
+This checks to see whether the file was written out:
+fs::dir_ls("data-raw")
 
 ## References {#references}
 1. Assignment Adapted from [Mine Cetinkaya-Rundel's Data Science in a Box](https://github.com/rstudio-education/datascience-box)
