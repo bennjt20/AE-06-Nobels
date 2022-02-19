@@ -18,22 +18,49 @@ Let's first load the data:
 nobel <- read_csv(file = "data-raw/nobel.csv")
 ```
 
+*Extract & Count Unique Values in Each Column of Data Frame:
+``{r unique}
+list_unique <- lapply(nobel, unique)
+list_unique
+```
+
+"Physics"    "Chemistry"  "Peace"      "Medicine"   "Literature" "Economics"
+
+
 Then let's split the data into two:
+    Create a new data frame, nobel_stem, that filters for the STEM fields (Physics, Medicine, Chemistry, and Economics).
+    Create another data frame, nobel_nonstem, that filters for the remaining fields. Tip: Use the %in% operator when filtering
 
 ```{r label-me2, eval=FALSE}
 # stem laureates
-___ <- nobel %>%
-  filter(___)
+nobel_stem <- nobel %>%
+  filter(category %in% c ("Physics", "Medicine", "Chemistry", "Economics"))
+```
 
-# non-steam laureates
-___ <- nobel %>%
-  filter(___)
+```{r Non-stem}
+# non-stem laureates
+nobel_nonstem <- nobel %>%
+  filter(category %in% c("Literature", "Peace"))
 ```
 
 And finally write out the data:
+    Write out the two data frames to nobel-stem.csv and nobel-nonstem.csv, respectively, to data/.
 
-```{r label-me3}
-# add code for writing out the two data frames here
+nobel <- read_csv(file = "data-raw/nobel.csv")
+
+"write_csv(df, file = "data-raw/df.csv")" gives us 688 obs, 26 vars 
+
+write_csv(df, file = "data-raw/df.csv")
+
+1) nobel-stem.csv 
+```{r nobel-stem.csv}
+write_csv(nobel_stem, file = "data-raw/nobel_stem.csv")
+fs::dir_ls("data-raw")
+```
+
+2) nobel-nonstem.csv
+```{r nobel-nonstem.csv}
+write_csv(nobel_nonstem, file = "data-raw/nobel_nonstem.csv")
 ```
 
 ## References {#references}
